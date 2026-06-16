@@ -561,8 +561,9 @@ install_latest_driver() {
             packages+=("${latest:-nvidia-driver-570}")
 
             # Add recommended packages
-            packages+=("nvidia-utils-${latest#nvidia-driver-}" 2>/dev/null || true)
-            packages+=("libnvidia-common-${latest#nvidia-driver-}" 2>/dev/null || true)
+            local nvidia_ver="${latest#nvidia-driver-}"
+            packages+=("nvidia-utils-${nvidia_ver}")
+            packages+=("libnvidia-common-${nvidia_ver}")
             ;;
         kali)
             packages+=("nvidia-driver" "nvidia-kernel-dkms")
